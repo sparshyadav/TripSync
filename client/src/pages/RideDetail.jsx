@@ -20,46 +20,46 @@ const RideDetail = () => {
   const { darkMode } = useDarkMode();
 
   console.log(darkMode)
-  
+
   const [book, setBook] = useState("Book Ride")
-  
+
 
   const handleBook = async (amount) => {
-    try{
+    try {
       const key = await axios.get(`${apiUri}/getkey`);
-      const {data:{order}} = await axios.post(`${apiUri}/checkout`, {
-          amount
+      const { data: { order } } = await axios.post(`${apiUri}/checkout`, {
+        amount
       });
-        var options = {
-          key, // Enter the Key ID generated from the Dashboard
-          "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-          "currency": "INR",
+      var options = {
+        key, // Enter the Key ID generated from the Dashboard
+        "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "currency": "INR",
+        "name": "Sourav Sharma",
+        "description": "TripSync Ride Booking",
+        "image": "./img/image.jpg",
+        "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        "callback_url": `${URL}/api/paymentverification`,
+        "prefill": {
           "name": "Sourav Sharma",
-          "description": "TripSync Ride Booking",
-          "image": "./img/image.jpg",
-          "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-          "callback_url": `${URL}/api/paymentverification`,
-          "prefill": {
-              "name": "Sourav Sharma",
-              "email": "souravsharma191919@gmail.com",
-              "contact": "8219769590"
-          },
-          "notes": {
-              "address": "Razorpay Corporate Office"
-          },
-          "theme": {
-              "color": "#3399cc"
-          }
+          "email": "souravsharma191919@gmail.com",
+          "contact": "8219769590"
+        },
+        "notes": {
+          "address": "Razorpay Corporate Office"
+        },
+        "theme": {
+          "color": "#3399cc"
+        }
       };
 
       var razor = new window.Razorpay(options);
       razor.open();
 
-      const res = await axios.get(`${apiUri}/rides/${rideId}/join`, {withCredentials: true})
+      const res = await axios.get(`${apiUri}/rides/${rideId}/join`, { withCredentials: true })
       toast(res, {
         description: format(new Date(), "PPp"),
       });
-    }catch(err){
+    } catch (err) {
       console.log(err)
     }
   };
@@ -114,7 +114,7 @@ const RideDetail = () => {
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction onClick={()=>handleBook(data?.price)}>Continue</AlertDialogAction>
+                <AlertDialogAction onClick={() => handleBook(data?.price)}>Continue</AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
@@ -125,7 +125,7 @@ const RideDetail = () => {
             <div className="flex flex-col justify-start items-start flex-shrink-0">
               <div className="flex w-full space-x-4 py-8 border-b">
                 <Avatar>
-                  <AvatarImage src={data?.profilePicture}/>
+                  <AvatarImage src={data?.profilePicture} />
                   <AvatarFallback className="select-none text-primary text-xl font-bold">{data?.creator.name[0]}</AvatarFallback>
                 </Avatar>
                 <div className="flex justify-center items-start flex-col space-y-2">

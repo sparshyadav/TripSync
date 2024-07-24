@@ -16,7 +16,7 @@ const SearchPage = () => {
   const { darkMode } = useDarkMode();
 
   return (
-    <main style={darkMode ? {backgroundColor :"black", color:"white"} : {}}>
+    <main style={darkMode ? { backgroundColor: "black", color: "white" } : {}}>
       <div className="z-10 flex justify-center items-center border-b bg-background p-8">
         <Search />
         <Dialog>
