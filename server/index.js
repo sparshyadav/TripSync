@@ -40,10 +40,10 @@ app.use("/api/auth", authRoute);
 app.use("/api/rides", rideRoute);
 app.use("/api", paymentRoute);
 
-app.get("/api/getkey", (req, res)=>{
-  res.status(200).json({key: process.env.RAZORPAY_API_KEY});
+app.get("/api/getkey", (req, res) => {
+  res.status(200).json({ key: process.env.RAZORPAY_API_KEY });
 })
-export const instance = new Razorpay ({
+export const instance = new Razorpay({
   key_id: process.env.RAZORPAY_API_KEY,
   key_secret: process.env.RAZORPAY_SECRET_KEY
 })
@@ -52,17 +52,17 @@ export const instance = new Razorpay ({
 const __dirname1 = path.resolve();
 if (process.env.NODE_ENV === 'production') {
   const staticPath = path.join(__dirname1, './client', 'dist');
-  console.log('Static Path:', staticPath); 
+  console.log('Static Path:', staticPath);
   app.use(express.static(staticPath));
   app.get('*', (req, res) => {
     const indexPath = path.resolve(__dirname1, './client', 'dist', 'index.html');
-    console.log('Index Path:', indexPath); 
+    console.log('Index Path:', indexPath);
     res.sendFile(indexPath);
   });
 }
 
 
-app.use((err, req, res, next)=>{
+app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;
   const errorMessage = err.message || "Something went wrong";
   return res.status(errorStatus).json({
