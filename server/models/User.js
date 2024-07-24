@@ -29,7 +29,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
-  age:{
+  age: {
     type: Number,
   },
   ridesCreated: [
@@ -75,7 +75,7 @@ const userSchema = new mongoose.Schema({
       ref: 'Rating',
     },
   ],
-}, {timestamps: true}
+}, { timestamps: true }
 );
 
 export default mongoose.model("User", userSchema);

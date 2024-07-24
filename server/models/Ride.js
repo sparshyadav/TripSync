@@ -19,12 +19,12 @@ const rideSchema = new mongoose.Schema({
   },
   origin: {
     place: {
-      type: String, 
+      type: String,
       required: true,
     },
     coordinates: {
       type: [Number],
-    }, 
+    },
   },
   destination: {
     place: {
@@ -49,7 +49,7 @@ const rideSchema = new mongoose.Schema({
     default: 'pending',
   },
   price: {
-    type: Number, 
+    type: Number,
   },
   vehicleDetails: {
     vehicleNumber: {
@@ -61,7 +61,7 @@ const rideSchema = new mongoose.Schema({
       trim: true,
     },
   },
-  chat: [ 
+  chat: [
     {
       sender: {
         type: mongoose.Schema.Types.ObjectId,
@@ -71,7 +71,7 @@ const rideSchema = new mongoose.Schema({
       timestamp: Date,
     },
   ],
-}, {timestamps:true}
+}, { timestamps: true }
 );
 
 export default mongoose.model('Ride', rideSchema);
