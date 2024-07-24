@@ -5,9 +5,9 @@ import { Checkbox } from './ui/checkbox'
 
 const Sidebar = () => {
   const sortBy = [
-    { 
+    {
       icon: <IndianRupee size={16} />,
-      title: "Earliest Departure", 
+      title: "Earliest Departure",
     },
     {
       icon: <Clock size={16} />,
@@ -18,7 +18,7 @@ const Sidebar = () => {
       title: "Shortest ride"
     },
   ]
-  const departureTime= [
+  const departureTime = [
     {
       name: "departure_before_six_am",
       title: "Before 6:00"
@@ -32,7 +32,7 @@ const Sidebar = () => {
       title: "12:00 - 18:00"
     },
   ]
-  
+
   return (
     <aside className="space-y-4 py-4">
       <div className="px-3 py-2">
@@ -41,7 +41,7 @@ const Sidebar = () => {
           <span className="mb-2 px-4 text-sm text-primary text-right underline cursor-pointer">Clear Filter</span>
         </div>
         <RadioGroup>
-          {sortBy.map(s => 
+          {sortBy.map(s =>
             <Label key={s.title} htmlFor={s.title} className="flex gap-2 items-center justify-between rounded-md bg-popover p-4 hover:bg-accent hover:text-accent-foreground">
               {s.icon}
               {s.title}
@@ -53,7 +53,7 @@ const Sidebar = () => {
 
       <div className="px-3 py-2">
         <h2 className="mb-2 px-4 text-lg font-semibold">Departure time</h2>
-        {departureTime.map(d => 
+        {departureTime.map(d =>
           <Label key={d.title} htmlFor={d.name} aria-label={d.name} className="flex gap-2 items-center justify-between rounded-md bg-popover p-4 hover:bg-accent hover:text-accent-foreground">
             {d.title}
             <Checkbox name={d.name} id={d.name} />

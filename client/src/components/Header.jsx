@@ -1,6 +1,6 @@
 import logo from "../assets/logo.png"
-import { Link, NavLink, useNavigate,  } from "react-router-dom"
-import { Avatar, AvatarFallback, AvatarImage  } from "./ui/avatar";
+import { Link, NavLink, useNavigate, } from "react-router-dom"
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { Search, PlusCircle, LogOut, User } from "lucide-react";
 import LoginSignupDialog from "./LoginSignupDialog";
@@ -66,15 +66,15 @@ import URL from "@/utils/url";
 const apiUri = URL
 
 const Header = () => {
-  const {user, dispatch} = useContext(AuthContext)
+  const { user, dispatch } = useContext(AuthContext)
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    try{
-      await axios.get(`${apiUri}/auth/logout`, {withCredentials: true});
+    try {
+      await axios.get(`${apiUri}/auth/logout`, { withCredentials: true });
       dispatch({ type: "LOGOUT" });
       navigate("/");
-    }catch(err){
+    } catch (err) {
       console.log(err)
     }
   };
@@ -82,48 +82,48 @@ const Header = () => {
   const { darkMode, toggleDarkMode } = useDarkMode();
 
   return (
-     <>
-    <div >
-    <header style={darkMode ? {backgroundColor :"black", color:"white"} : {backgroundColor:"white", color:"black"}} className="sticky top-0 z-50 w-full border-b border-border/40 bg-background mx-auto flex p-5 lg:px-16 items-center justify-end">
-      <NavLink to="/" className="inline-flex -order-1 items-center gap-2">
-        <img src={logo} width={220} alt="tripSync" />
-      </NavLink>
-      <nav className="ml-auto flex items-center text-base justify-center">
-      <FormGroup>
-      <FormControlLabel
-        control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked  onChange={toggleDarkMode}/>}
-      />
- </FormGroup>
- <NavLink to="/search" className="flex items-center gap-2 mr-5 hover:text-primary">
-  <Search className="h-6 w-6" />
-  <span className="hidden md:inline">Search</span>
-</NavLink>
-        <NavLink to="/offer-seat" className="flex items-center gap-2 mr-5 hover:text-primary "> <PlusCircle className="h-6 w-6 " /> <span className="hidden md:inline">Publish a Ride</span></NavLink>
-      </nav>
-      {!user ?
-        <LoginSignupDialog />
-        :
-        <DropdownMenu>
-          <DropdownMenuTrigger>
-            <Avatar>
-              <AvatarImage src={user.user.profilePicture} />
-              <AvatarFallback className="select-none text-primary text-xl font-bold">{user.user?.name[0]}</AvatarFallback>
-            </Avatar>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <Link to="/profile" className="flex">
-                <User className="mr-2 h-4 w-4"/><span>Profile</span>
-              </Link>
-              </DropdownMenuItem>
-            <DropdownMenuItem className='cursor-pointer' onClick={handleLogout}><LogOut className="mr-2 h-4 w-4"/><span>Log Out</span></DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      }
-    </header>
-    </div>
+    <>
+      <div >
+        <header style={darkMode ? { backgroundColor: "black", color: "white" } : { backgroundColor: "white", color: "black" }} className="sticky top-0 z-50 w-full border-b border-border/40 bg-background mx-auto flex p-5 lg:px-16 items-center justify-end">
+          <NavLink to="/" className="inline-flex -order-1 items-center gap-2">
+            <img src={logo} width={220} alt="tripSync" />
+          </NavLink>
+          <nav className="ml-auto flex items-center text-base justify-center">
+            <FormGroup>
+              <FormControlLabel
+                control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked onChange={toggleDarkMode} />}
+              />
+            </FormGroup>
+            <NavLink to="/search" className="flex items-center gap-2 mr-5 hover:text-primary">
+              <Search className="h-6 w-6" />
+              <span className="hidden md:inline">Search</span>
+            </NavLink>
+            <NavLink to="/offer-seat" className="flex items-center gap-2 mr-5 hover:text-primary "> <PlusCircle className="h-6 w-6 " /> <span className="hidden md:inline">Publish a Ride</span></NavLink>
+          </nav>
+          {!user ?
+            <LoginSignupDialog />
+            :
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                <Avatar>
+                  <AvatarImage src={user.user.profilePicture} />
+                  <AvatarFallback className="select-none text-primary text-xl font-bold">{user.user?.name[0]}</AvatarFallback>
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <Link to="/profile" className="flex">
+                    <User className="mr-2 h-4 w-4" /><span>Profile</span>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem className='cursor-pointer' onClick={handleLogout}><LogOut className="mr-2 h-4 w-4" /><span>Log Out</span></DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          }
+        </header>
+      </div>
     </>
   )
 }

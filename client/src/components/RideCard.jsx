@@ -1,8 +1,8 @@
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
-const RideCard = ({details}) => {
-  const {creator, origin, destination, startTime, endTime, price} = details;
-  function getTime(dateTimeInput){
+const RideCard = ({ details }) => {
+  const { creator, origin, destination, startTime, endTime, price } = details;
+  function getTime(dateTimeInput) {
     const selectedDate = new Date(dateTimeInput);
     // Extract the time without seconds
     const hours = selectedDate.getHours();

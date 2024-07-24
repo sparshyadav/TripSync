@@ -21,7 +21,7 @@ const searchSchema = z.object({
 })
 
 const Search = () => {
-  const [searchParams, setSearchParams] = useSearchParams({from:"",to:"",seat:"",date:""})
+  const [searchParams, setSearchParams] = useSearchParams({ from: "", to: "", seat: "", date: "" })
 
   const form = useForm({
     resolver: zodResolver(searchSchema),
@@ -35,7 +35,7 @@ const Search = () => {
 
   const onSubmit = async (data) => {
     await form.handleSubmit((formData) => {
-      setSearchParams(formData, {replace: true});
+      setSearchParams(formData, { replace: true });
     })(data);
   };
 
@@ -44,8 +44,8 @@ const Search = () => {
 
   return (
     <Form  {...form}>
-      <form  onSubmit={onSubmit} className="flex flex-col gap-1 sm:flex-row w-full sm:w-fit divide-y sm:divide-y-0 sm:divide-x bg-background border p-3 rounded-lg">
-        <div  className="flex ">
+      <form onSubmit={onSubmit} className="flex flex-col gap-1 sm:flex-row w-full sm:w-fit divide-y sm:divide-y-0 sm:divide-x bg-background border p-3 rounded-lg">
+        <div className="flex ">
           <FormField
             control={form.control}
             name="from"
@@ -59,9 +59,9 @@ const Search = () => {
             )}
           />
         </div>
-        <div  className="flex ">
+        <div className="flex ">
           <FormField
-          
+
             control={form.control}
             name="to"
             render={({ field }) => (
@@ -76,38 +76,38 @@ const Search = () => {
         </div>
         <div className="flex justify-between " >
           <FormField
-              control={form.control}
-              name="date"
-              render={({ field }) => (
-                <FormItem className="flex">
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <FormControl>
-                        <Button variant={"ghost"} className={cn("md:text-base px-0 sm:px-4 hover:bg-transparent", !field.value && "text-muted-foreground" )}>
-                          <CalendarIcon size={20} className="opacity-50 mr-1 text-foreground" />
-                          {field.value ? (
-                            format(field.value, "PPP")
-                          ) : (
-                            <span>Pick a date</span>
-                          )}
-                        </Button>
-                      </FormControl>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0" align="start">
-                      <Calendar
-                        mode="single"
-                        selected={field.value}
-                        onSelect={field.onChange}
-                        disabled={(date) =>
-                          date < new Date().setHours(0, 0, 0, 0)
-                        }
-                        initialFocus
-                      />
-                    </PopoverContent>
-                  </Popover>
-                </FormItem>
-              )}
-            />
+            control={form.control}
+            name="date"
+            render={({ field }) => (
+              <FormItem className="flex">
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <FormControl>
+                      <Button variant={"ghost"} className={cn("md:text-base px-0 sm:px-4 hover:bg-transparent", !field.value && "text-muted-foreground")}>
+                        <CalendarIcon size={20} className="opacity-50 mr-1 text-foreground" />
+                        {field.value ? (
+                          format(field.value, "PPP")
+                        ) : (
+                          <span>Pick a date</span>
+                        )}
+                      </Button>
+                    </FormControl>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={field.value}
+                      onSelect={field.onChange}
+                      disabled={(date) =>
+                        date < new Date().setHours(0, 0, 0, 0)
+                      }
+                      initialFocus
+                    />
+                  </PopoverContent>
+                </Popover>
+              </FormItem>
+            )}
+          />
           <FormField
             control={form.control}
             name="seat"
@@ -124,11 +124,11 @@ const Search = () => {
                   </PopoverTrigger>
                   <PopoverContent className="w-auto p-0" align="start">
                     <div className="p-4 flex gap-2 items-center">
-                      <Button variant="outline" size="icon" onClick={() => field.value>1 && field.onChange(field.value - 1)}>
+                      <Button variant="outline" size="icon" onClick={() => field.value > 1 && field.onChange(field.value - 1)}>
                         <Minus className="h-4 w-4" />
                       </Button>
                       <span>{field.value}</span>
-                      <Button variant="outline" size="icon" onClick={() => field.value<10 && field.onChange(field.value + 1)}  >
+                      <Button variant="outline" size="icon" onClick={() => field.value < 10 && field.onChange(field.value + 1)}  >
                         <Plus className="h-4 w-4" />
                       </Button>
                     </div>
@@ -141,7 +141,7 @@ const Search = () => {
         <Button type="submit" className="md:ml-6" >Search</Button>
       </form>
     </Form>
-    
+
   )
 }
 

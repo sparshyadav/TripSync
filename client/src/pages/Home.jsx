@@ -10,11 +10,11 @@ const Home = () => {
 
   return (
     <>
-      <div style={darkMode ? {backgroundColor :"black", color:"white"} : {backgroundColor:"white", color:"black"}}>
-      <Hero />
-      <GoogleMaps />
-      <Features />
-      <About />
+      <div style={darkMode ? { backgroundColor: "black", color: "white" } : { backgroundColor: "white", color: "black" }}>
+        <Hero />
+        <GoogleMaps />
+        <Features />
+        <About />
       </div>
       {/* <Testimonial /> */}
     </>

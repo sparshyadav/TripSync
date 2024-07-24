@@ -26,15 +26,15 @@ const OfferSeat = () => {
           <PublishCard />
         </div>
         <div className="flex flex-col flex-wrap gap-10 px-0 md:px-10 sm:py-0 md:w-2/3 text-left">
-        {steps.map(step => 
-          <div key={step.step} className="flex flex-col md:items-start">
-            <div className="w-10 h-10 inline-flex items-center justify-center rounded-lg bg-secondary text-primary mb-5">{step.step}</div>
-            <div className="flex-grow">
-              <h2 className="text-lg title-font font-medium mb-3">{step.title}</h2>
-              <p className="leading-relaxed text-muted-foreground text-base">{step.description}</p>
+          {steps.map(step =>
+            <div key={step.step} className="flex flex-col md:items-start">
+              <div className="w-10 h-10 inline-flex items-center justify-center rounded-lg bg-secondary text-primary mb-5">{step.step}</div>
+              <div className="flex-grow">
+                <h2 className="text-lg title-font font-medium mb-3">{step.title}</h2>
+                <p className="leading-relaxed text-muted-foreground text-base">{step.description}</p>
+              </div>
             </div>
-          </div>
-        )}
+          )}
         </div>
       </div>
     </section>

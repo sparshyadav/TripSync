@@ -5,22 +5,22 @@ const Footer = () => {
   const { darkMode } = useDarkMode();
 
   return (
-    <footer style={darkMode ? {backgroundColor :"black", color:"white"} : {}} className="bg-secondary text-muted-foreground px-6 pt-16 mx-auto md:px-24 lg:px-40">
-      <div style={darkMode ? {backgroundColor :"black", color:"white"} : {}} className="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
+    <footer style={darkMode ? { backgroundColor: "black", color: "white" } : {}} className="bg-secondary text-muted-foreground px-6 pt-16 mx-auto md:px-24 lg:px-40">
+      <div style={darkMode ? { backgroundColor: "black", color: "white" } : {}} className="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
         <div className="sm:col-span-2">
-          <h1 style={darkMode ? {backgroundColor :"black", color:"white"} : {}} className="text-xl font-bold text-primary">
+          <h1 style={darkMode ? { backgroundColor: "black", color: "white" } : {}} className="text-xl font-bold text-primary">
             TripSync
           </h1>
           <div className="mt-6 lg:max-w-sm">
-            <p style={darkMode ? {backgroundColor :"black", color:"white"} : {}} className="text-sm text-foreground">
+            <p style={darkMode ? { backgroundColor: "black", color: "white" } : {}} className="text-sm text-foreground">
               Share your ride with the person heading to the same destination. Experience convenience, reliability, and affordability in one seamless package. Your journey, our priority.
             </p>
           </div>
         </div>
         <div className="space-y-2 text-sm">
-          <p style={darkMode ? {backgroundColor :"black", color:"white"} : {}} className="text-base font-bold tracking-wide text-foreground">Contacts</p>
+          <p style={darkMode ? { backgroundColor: "black", color: "white" } : {}} className="text-base font-bold tracking-wide text-foreground">Contacts</p>
           <div className="flex">
-            <p style={darkMode ? {backgroundColor :"black", color:"white"} : {}} className="mr-1 text-foreground">Phone:</p>
+            <p style={darkMode ? { backgroundColor: "black", color: "white" } : {}} className="mr-1 text-foreground">Phone:</p>
             <a
               href="tel:850-123-5021"
               aria-label="Our phone"
@@ -30,7 +30,7 @@ const Footer = () => {
             </a>
           </div>
           <div className="flex">
-            <p style={darkMode ? {backgroundColor :"black", color:"white"} : {}} className="mr-1 text-foreground">Email:</p>
+            <p style={darkMode ? { backgroundColor: "black", color: "white" } : {}} className="mr-1 text-foreground">Email:</p>
             <a
               href="mailto:info@rideshare.mail"
               aria-label="Our email"
@@ -40,7 +40,7 @@ const Footer = () => {
             </a>
           </div>
           <div className="flex">
-            <p style={darkMode ? {backgroundColor :"black", color:"white"} : {}} className="mr-1 text-foreground">Address:</p>
+            <p style={darkMode ? { backgroundColor: "black", color: "white" } : {}} className="mr-1 text-foreground">Address:</p>
             <a
               href="https://www.google.com/maps"
               target="_blank"
@@ -53,7 +53,7 @@ const Footer = () => {
           </div>
         </div>
         <div>
-          <span style={darkMode ? {backgroundColor :"black", color:"white"} : {}} className="text-base font-bold text-foreground">Social</span>
+          <span style={darkMode ? { backgroundColor: "black", color: "white" } : {}} className="text-base font-bold text-foreground">Social</span>
           <div className="flex items-center mt-2 space-x-3">
             <a href="/"><Twitter /></a>
             <a href="/"><Instagram /></a>
